@@ -1,8 +1,7 @@
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { AppProps } from "next/app";
 import { FunctionComponent } from "react";
-
-const theme = extendTheme({});
+import { theme } from "util/theme";
 
 const CustomApp: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
   return (

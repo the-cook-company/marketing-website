@@ -13,7 +13,7 @@ const contentfulDeliveryApiClient = createClient({
 });
 
 const contentfulPreviewApiClient = createClient({
-  accessToken: environmentVariables.contentfulPreviewApiAccessToken,
+  accessToken: environmentVariables.contentfulPreviewApiAccessToken.value,
   host: environmentVariables.contentfulPreviewHost.value,
   ...sharedContentfulClientOptions,
 });
