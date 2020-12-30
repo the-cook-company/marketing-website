@@ -38,6 +38,7 @@ const fetchPage = async ({
     const pageCollection: EntryCollection<Contentful.IPageFields> = await contentfulClient.getEntries(
       {
         content_type: "page",
+        include: 10,
         "fields.slug": slug,
       }
     );
@@ -56,7 +57,7 @@ const fetchPageCollection = async ({
     : contentfulDeliveryApiClient;
 
   const pageCollection: EntryCollection<Contentful.IPageFields> = await contentfulClient.getEntries(
-    { content_type: "page" }
+    { content_type: "page", include: 10 }
   );
 
   return pageCollection;

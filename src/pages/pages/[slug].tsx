@@ -4,6 +4,8 @@ import { stringify, parse } from "flatted";
 import { Center, Link } from "@chakra-ui/react";
 import Head from "next/head";
 import NextLink from "next/link";
+import { Blocks } from "components/Blocks";
+import { renderBlock } from "util/render-block";
 
 type PagePageProps = {
   preview: boolean;
@@ -19,13 +21,13 @@ const PagePage: NextPage<PagePageProps> = ({ preview, stringifiedPage }) => {
         <title>{`${page.fields.title} | The Cook Company`}</title>
       </Head>
       {preview ? (
-        <Center bg="red" color="white">
-          <NextLink href="/api/preview/exit">
+        <Center height={8} bg="red.700" color="white.50">
+          <NextLink passHref href="/api/preview/exit">
             <Link>Exit Preview</Link>
           </NextLink>
         </Center>
       ) : null}
-      Page
+      <Blocks renderBlock={renderBlock} blocks={page.fields.blocks} />
     </>
   );
 };

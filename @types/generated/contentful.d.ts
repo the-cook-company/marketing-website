@@ -60,6 +60,42 @@ declare namespace Contentful {
     };
   }
 
+  export interface IBlockFields {
+    /** Name */
+    name: string;
+
+    /** Constrain Width */
+    constrainWidth: boolean;
+
+    /** Element */
+    element:
+      | IAddress
+      | IAssetDownload
+      | IContact
+      | IFooter
+      | IHero
+      | INavigationBar
+      | IPage
+      | IRichText;
+  }
+
+  export interface IBlock extends Entry<IBlockFields> {
+    sys: {
+      id: string;
+      type: string;
+      createdAt: string;
+      updatedAt: string;
+      locale: string;
+      contentType: {
+        sys: {
+          id: "block";
+          linkType: "ContentType";
+          type: "Link";
+        };
+      };
+    };
+  }
+
   export interface IContactFields {
     /** Name */
     name: string;
@@ -148,8 +184,11 @@ declare namespace Contentful {
     /** Logo */
     logo: Asset;
 
-    /** Pages */
-    pages: IPage[];
+    /** LogoEntry */
+    logoEntry: IPage;
+
+    /** Entries */
+    entries: IPage[];
   }
 
   export interface INavigationBar extends Entry<INavigationBarFields> {
@@ -182,8 +221,8 @@ declare namespace Contentful {
     /** Image */
     image: Asset;
 
-    /** Content */
-    content: Document;
+    /** Blocks */
+    blocks: IBlock[];
   }
 
   export interface IPage extends Entry<IPageFields> {
@@ -203,14 +242,41 @@ declare namespace Contentful {
     };
   }
 
+  export interface IRichTextFields {
+    /** Name */
+    name: string;
+
+    /** Rich Text */
+    richText: Document;
+  }
+
+  export interface IRichText extends Entry<IRichTextFields> {
+    sys: {
+      id: string;
+      type: string;
+      createdAt: string;
+      updatedAt: string;
+      locale: string;
+      contentType: {
+        sys: {
+          id: "richText";
+          linkType: "ContentType";
+          type: "Link";
+        };
+      };
+    };
+  }
+
   export type CONTENT_TYPE =
     | "address"
     | "assetDownload"
+    | "block"
     | "contact"
     | "footer"
     | "hero"
     | "navigationBar"
-    | "page";
+    | "page"
+    | "richText";
 
   export type LOCALE_CODE = "en-US";
 
