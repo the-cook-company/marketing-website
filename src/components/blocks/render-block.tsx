@@ -1,8 +1,8 @@
-import { Composer as NavigationBarComposer } from "components/navigation-bar";
+import { NavigationBarComposer } from "components/navigation-bar";
 import { ReactNode } from "react";
 import { v4 as uuid } from "uuid";
 
-const renderBlock: (block: Contentful.IBlock) => ReactNode = (block) => {
+const renderBlock = (block: Contentful.IBlock): ReactNode => {
   let ElementComponent: ReactNode;
 
   switch (block.fields.element.sys.contentType.sys.id) {

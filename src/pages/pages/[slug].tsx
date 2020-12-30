@@ -4,8 +4,7 @@ import { stringify, parse } from "flatted";
 import { Center, Link } from "@chakra-ui/react";
 import Head from "next/head";
 import NextLink from "next/link";
-import { Blocks } from "components/Blocks";
-import { renderBlock } from "util/render-block";
+import { BlocksComposer } from "components/blocks";
 
 type PagePageProps = {
   preview: boolean;
@@ -27,7 +26,7 @@ const PagePage: NextPage<PagePageProps> = ({ preview, stringifiedPage }) => {
           </NextLink>
         </Center>
       ) : null}
-      <Blocks renderBlock={renderBlock} blocks={page.fields.blocks} />
+      <BlocksComposer blocks={page.fields.blocks} />
     </>
   );
 };

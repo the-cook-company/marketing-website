@@ -8,11 +8,13 @@ import { NavigationOverlayTrigger } from "./navigation-overlay-trigger";
 import { v4 as uuid } from "uuid";
 import NextImage from "next/image";
 
-type ComposerProps = {
+type NavigationBarComposerProps = {
   element: Contentful.INavigationBar;
 };
 
-const Composer: FunctionComponent<ComposerProps> = ({ element }) => {
+const NavigationBarComposer: FunctionComponent<NavigationBarComposerProps> = ({
+  element,
+}) => {
   const navigationLinks = element.fields.entries.map((entry) => (
     <NavigationLink
       key={uuid()}
@@ -51,4 +53,4 @@ const Composer: FunctionComponent<ComposerProps> = ({ element }) => {
   );
 };
 
-export { Composer };
+export { NavigationBarComposer };
