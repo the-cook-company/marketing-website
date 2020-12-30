@@ -1,3 +1,5 @@
+import { Container } from "@chakra-ui/react";
+import { HeroComposer } from "components/hero";
 import { NavigationBarComposer } from "components/navigation-bar";
 import { ReactNode } from "react";
 import { v4 as uuid } from "uuid";
@@ -15,7 +17,12 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
     case "page":
       break;
     case "hero":
-      ElementComponent = <p>Hero</p>;
+      ElementComponent = (
+        <HeroComposer
+          key={uuid()}
+          element={block.fields.element as Contentful.IHero}
+        />
+      );
       break;
     case "footer":
       ElementComponent = <p>Footer</p>;
@@ -36,7 +43,11 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
       break;
   }
 
-  return ElementComponent;
+  return block.fields.constrainWidth ? (
+    <Container maxWidth="4xl">{ElementComponent}</Container>
+  ) : (
+    ElementComponent
+  );
 };
 
 export { renderBlock };

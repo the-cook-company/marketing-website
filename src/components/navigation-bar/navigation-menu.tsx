@@ -11,7 +11,11 @@ const NavigationMenu: FunctionComponent<NavigationMenuProps> = ({
 }) => {
   const [state] = useNavigationBar();
 
-  return <Stack direction={direction}>{state.navigationLinks}</Stack>;
+  return (
+    <Stack spacing={6} direction={direction}>
+      {state.navigationLinks}
+    </Stack>
+  );
 };
 
 export { NavigationMenu };

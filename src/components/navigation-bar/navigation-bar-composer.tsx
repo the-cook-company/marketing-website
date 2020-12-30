@@ -7,6 +7,8 @@ import { NavigationOverlay } from "./navigation-overlay";
 import { NavigationOverlayTrigger } from "./navigation-overlay-trigger";
 import { v4 as uuid } from "uuid";
 import NextImage from "next/image";
+import NextLink from "next/link";
+import { Box } from "@chakra-ui/react";
 
 type NavigationBarComposerProps = {
   element: Contentful.INavigationBar;
@@ -36,14 +38,18 @@ const NavigationBarComposer: FunctionComponent<NavigationBarComposerProps> = ({
           />
         }
         logo={
-          <div style={{ position: "relative", width: "100px", height: "50px" }}>
-            <NextImage
-              src={`https:${element.fields.logo.fields.file.url}`}
-              alt={element.fields.logo.fields.title}
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>
+          <Box position="relative" width="100px" height="50px">
+            <NextLink href={`/pages/${element.fields.logoEntry.fields.slug}`}>
+              <a>
+                <NextImage
+                  src={`https:${element.fields.logo.fields.file.url}`}
+                  alt={element.fields.logo.fields.title}
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </a>
+            </NextLink>
+          </Box>
         }
         navigationMenu={<NavigationMenu direction="row" />}
         breakpoint="md"
