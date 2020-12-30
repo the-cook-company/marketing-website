@@ -1,7 +1,7 @@
-import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { Button, VisuallyHidden } from "@chakra-ui/react";
+import { Button, Icon, VisuallyHidden } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { useNavigationBar } from "./context";
+import { Menu, X } from "react-feather";
 
 const NavigationOverlayTrigger: FunctionComponent = () => {
   const [state, dispatch] = useNavigationBar();
@@ -14,12 +14,12 @@ const NavigationOverlayTrigger: FunctionComponent = () => {
       {state.isNavigationOverlayVisible ? (
         <>
           <VisuallyHidden>Close Navigation Overlay</VisuallyHidden>
-          <CloseIcon />
+          <Icon as={X} />
         </>
       ) : (
         <>
           <VisuallyHidden>Open Navigation Overlay</VisuallyHidden>
-          <HamburgerIcon />
+          <Icon as={Menu} />
         </>
       )}
     </Button>

@@ -13,32 +13,34 @@ type HeroProps = {
 };
 
 const Hero: FunctionComponent<HeroProps> = ({ image, tagline }) => {
-  const containerHeight = useBreakpointValue({ base: "2xs", md: "md" });
+  const containerHeight = useBreakpointValue({
+    base: "xs",
+    sm: "sm",
+    md: "md",
+    lg: "lg",
+  });
   const headerSpacing = useBreakpointValue({ base: 4, md: 6 });
 
   return (
-    <Container
+    <Box
       display="flex"
       alignItems="center"
       justifyContent="center"
       position="relative"
-      maxWidth="4xl"
-      padding={0}
       height={containerHeight}
     >
       {image}
-      <Box
-        position="absolute"
-        backgroundColor="red.700"
-        color="white.50"
-        padding={headerSpacing}
-        margin={headerSpacing}
-      >
-        <Heading as="h2" noOfLines={4}>
+      <Container position="absolute" padding={headerSpacing}>
+        <Heading
+          as="h2"
+          textShadow="0 0 5px grey"
+          color="white.50"
+          noOfLines={4}
+        >
           {tagline}
         </Heading>
-      </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 };
 

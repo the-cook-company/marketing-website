@@ -1,4 +1,5 @@
 import { Container } from "@chakra-ui/react";
+import { AssetDownloadComposer } from "components/asset-download";
 import { HeroComposer } from "components/hero";
 import { NavigationBarComposer } from "components/navigation-bar";
 import { ReactNode } from "react";
@@ -12,7 +13,12 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
       ElementComponent = <p>Address</p>;
       break;
     case "assetDownload":
-      ElementComponent = <p>Asset Download</p>;
+      ElementComponent = (
+        <AssetDownloadComposer
+          key={uuid()}
+          element={block.fields.element as Contentful.IAssetDownload}
+        />
+      );
       break;
     case "page":
       break;
