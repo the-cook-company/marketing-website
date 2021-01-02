@@ -1,20 +1,22 @@
 import { createClient } from "contentful";
-import { environmentVariables } from "util/config";
+import { privateEnvironmentVariables } from "util/environment-variables";
 
 const sharedContentfulClientOptions = {
-  space: environmentVariables.contentfulSpaceId.value,
-  environment: environmentVariables.contentfulEnvironment.value,
-  application: `${environmentVariables.npmPackageName.value}/${environmentVariables.npmPackageVersion}`,
+  space: privateEnvironmentVariables.contentfulSpaceId.value,
+  environment: privateEnvironmentVariables.contentfulEnvironment.value,
+  application: `${privateEnvironmentVariables.npmPackageName.value}/${privateEnvironmentVariables.npmPackageVersion}`,
 };
 
 const contentfulDeliveryApiClient = createClient({
-  accessToken: environmentVariables.contentfulDeliveryApiAccessToken.value,
+  accessToken:
+    privateEnvironmentVariables.contentfulDeliveryApiAccessToken.value,
   ...sharedContentfulClientOptions,
 });
 
 const contentfulPreviewApiClient = createClient({
-  accessToken: environmentVariables.contentfulPreviewApiAccessToken.value,
-  host: environmentVariables.contentfulPreviewHost.value,
+  accessToken:
+    privateEnvironmentVariables.contentfulPreviewApiAccessToken.value,
+  host: privateEnvironmentVariables.contentfulPreviewHost.value,
   ...sharedContentfulClientOptions,
 });
 

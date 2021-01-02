@@ -1,8 +1,8 @@
 import {
+  AspectRatio,
   Box,
   Button,
   Container,
-  Flex,
   Heading,
   Icon,
   Link,
@@ -10,7 +10,6 @@ import {
   Spacer,
   Stack,
   Text,
-  useBreakpointValue,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { FunctionComponent, ReactElement } from "react";
@@ -31,19 +30,11 @@ const Page: FunctionComponent<PageProps> = ({
   callToAction,
   path,
 }) => {
-  const imageContainerHeight = useBreakpointValue({
-    base: 36,
-    md: 44,
-    lg: 48,
-  });
-
   return (
     <Box padding={6} shadow="md">
       <Container maxWidth="lg">
         <SimpleGrid gap={6} columns={{ sm: 1, md: 2 }}>
-          <Box position="relative" height={imageContainerHeight}>
-            {image}
-          </Box>
+          <AspectRatio ratio={4 / 3}>{image}</AspectRatio>
           <Stack>
             <Heading>{title}</Heading>
             <Text noOfLines={3}>{description}</Text>

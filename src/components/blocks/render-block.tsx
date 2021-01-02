@@ -1,4 +1,5 @@
 import { Box, Container } from "@chakra-ui/react";
+import { AddressComposer } from "components/address";
 import { AssetDownloadComposer } from "components/asset-download";
 import { ImageComposer } from "components/image";
 import { NavigationBarComposer } from "components/navigation-bar";
@@ -12,7 +13,12 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
 
   switch (block.fields.element.sys.contentType.sys.id) {
     case "address":
-      ElementComponent = <p>Address</p>;
+      ElementComponent = (
+        <AddressComposer
+          key={uuid()}
+          element={block.fields.element as Contentful.IAddress}
+        />
+      );
       break;
     case "assetDownload":
       ElementComponent = (

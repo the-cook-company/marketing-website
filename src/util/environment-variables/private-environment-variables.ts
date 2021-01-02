@@ -1,4 +1,4 @@
-type EnvironmentVariable = {
+type PrivateEnvironmentVariable = {
   readonly index: string;
 } & (
   | {
@@ -11,7 +11,7 @@ type EnvironmentVariable = {
     }
 );
 
-type EnvironmentVariableNames =
+type PrivateEnvironmentVariableNames =
   | "contentfulManagementApiAccessToken"
   | "contentfulDeliveryApiAccessToken"
   | "contentfulPreviewApiAccessToken"
@@ -22,13 +22,13 @@ type EnvironmentVariableNames =
   | "npmPackageVersion"
   | "npmPackageName";
 
-type EnvironmentVariables = Record<
-  EnvironmentVariableNames,
-  EnvironmentVariable
+type PrivateEnvironmentVariables = Record<
+  PrivateEnvironmentVariableNames,
+  PrivateEnvironmentVariable
 >;
 
-const getEnvironmentVariableValue = (
-  environmentVariable: EnvironmentVariable
+const getPrivateEnvironmentVariableValue = (
+  environmentVariable: PrivateEnvironmentVariable
 ): string => {
   const value = process.env[environmentVariable.index];
 
@@ -41,70 +41,70 @@ const getEnvironmentVariableValue = (
   return value;
 };
 
-const environmentVariables: EnvironmentVariables = {
+const privateEnvironmentVariables: PrivateEnvironmentVariables = {
   contentfulManagementApiAccessToken: {
     required: true,
     index: "CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN",
     get value(): string {
-      return getEnvironmentVariableValue(this);
+      return getPrivateEnvironmentVariableValue(this);
     },
   },
   contentfulDeliveryApiAccessToken: {
     required: true,
     index: "CONTENTFUL_DELIVERY_API_ACCESS_TOKEN",
     get value(): string {
-      return getEnvironmentVariableValue(this);
+      return getPrivateEnvironmentVariableValue(this);
     },
   },
   contentfulPreviewApiAccessToken: {
     required: false,
     index: "CONTENTFUL_PREVIEW_API_ACCESS_TOKEN",
     get value(): string {
-      return getEnvironmentVariableValue(this);
+      return getPrivateEnvironmentVariableValue(this);
     },
   },
   contentfulEnvironment: {
     required: false,
     index: "CONTENTFUL_ENVIRONMENT",
     get value(): string {
-      return getEnvironmentVariableValue(this);
+      return getPrivateEnvironmentVariableValue(this);
     },
   },
   contentfulPreviewSecret: {
     required: true,
     index: "CONTENTFUL_PREVIEW_SECRET",
     get value(): string {
-      return getEnvironmentVariableValue(this);
+      return getPrivateEnvironmentVariableValue(this);
     },
   },
   contentfulPreviewHost: {
     required: true,
     index: "CONTENTFUL_PREVIEW_HOST",
     get value(): string {
-      return getEnvironmentVariableValue(this);
+      return getPrivateEnvironmentVariableValue(this);
     },
   },
   contentfulSpaceId: {
     required: true,
     index: "CONTENTFUL_SPACE_ID",
     get value(): string {
-      return getEnvironmentVariableValue(this);
+      return getPrivateEnvironmentVariableValue(this);
     },
   },
   npmPackageVersion: {
     required: false,
     index: "npm_package_version",
     get value(): string {
-      return getEnvironmentVariableValue(this);
+      return getPrivateEnvironmentVariableValue(this);
     },
   },
   npmPackageName: {
     required: false,
     index: "npm_package_name",
     get value(): string {
-      return getEnvironmentVariableValue(this);
+      return getPrivateEnvironmentVariableValue(this);
     },
   },
 };
 
-export { environmentVariables };
+export { privateEnvironmentVariables };

@@ -14,6 +14,9 @@ declare namespace Contentful {
     /** Physical */
     physical: { lat: number; lon: number };
 
+    /** Mailing */
+    mailing: string;
+
     /** Phone */
     phone: string;
   }
