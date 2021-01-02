@@ -11,8 +11,8 @@ import {
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { Download } from "react-feather";
-import { saveAs } from "file-saver";
 import prettyBytes from "pretty-bytes";
+import jsFileDownloader from "js-file-downloader";
 
 type AssetDownloadProps = {
   title: string;
@@ -29,8 +29,9 @@ const AssetDownload: FunctionComponent<AssetDownloadProps> = ({
   fileSize,
   fileUrl,
 }) => {
-  const downloadFile = (): void => {
-    saveAs(fileUrl);
+  const downloadFile = async (): Promise<void> => {
+    const download = new jsFileDownloader({ url: fileUrl, autoStart: false });
+    await download.start();
   };
 
   return (
