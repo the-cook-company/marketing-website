@@ -1,14 +1,14 @@
 import { FunctionComponent } from "react";
-import { Hero } from "./hero";
+import { Image } from "./image";
 import NextImage from "next/image";
 
-type HeroComposerProps = {
-  element: Contentful.IHero;
+type ImageComposerProps = {
+  element: Contentful.IImage;
 };
 
-const HeroComposer: FunctionComponent<HeroComposerProps> = ({ element }) => {
+const ImageComposer: FunctionComponent<ImageComposerProps> = ({ element }) => {
   return (
-    <Hero
+    <Image
       image={
         <NextImage
           src={`https:${element.fields.image.fields.file.url}`}
@@ -21,4 +21,4 @@ const HeroComposer: FunctionComponent<HeroComposerProps> = ({ element }) => {
   );
 };
 
-export { HeroComposer };
+export { ImageComposer };

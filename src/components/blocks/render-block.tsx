@@ -1,6 +1,6 @@
 import { Box, Container } from "@chakra-ui/react";
 import { AssetDownloadComposer } from "components/asset-download";
-import { HeroComposer } from "components/hero";
+import { ImageComposer } from "components/image";
 import { NavigationBarComposer } from "components/navigation-bar";
 import { PageComposer } from "components/page";
 import { RichTextComposer } from "components/rich-text";
@@ -30,11 +30,11 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
         />
       );
       break;
-    case "hero":
+    case "image":
       ElementComponent = (
-        <HeroComposer
+        <ImageComposer
           key={uuid()}
-          element={block.fields.element as Contentful.IHero}
+          element={block.fields.element as Contentful.IImage}
         />
       );
       break;

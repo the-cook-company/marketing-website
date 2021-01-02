@@ -76,7 +76,7 @@ declare namespace Contentful {
       | IAssetDownload
       | IContact
       | IFooter
-      | IHero
+      | IImage
       | INavigationBar
       | IPage
       | IRichText;
@@ -152,18 +152,18 @@ declare namespace Contentful {
     };
   }
 
-  export interface IHeroFields {
+  export interface IImageFields {
     /** Name */
     name: string;
 
     /** Tagline */
-    tagline: string;
+    tagline?: string | undefined;
 
     /** Image */
     image: Asset;
   }
 
-  export interface IHero extends Entry<IHeroFields> {
+  export interface IImage extends Entry<IImageFields> {
     sys: {
       id: string;
       type: string;
@@ -172,7 +172,7 @@ declare namespace Contentful {
       locale: string;
       contentType: {
         sys: {
-          id: "hero";
+          id: "image";
           linkType: "ContentType";
           type: "Link";
         };
@@ -276,7 +276,7 @@ declare namespace Contentful {
     | "block"
     | "contact"
     | "footer"
-    | "hero"
+    | "image"
     | "navigationBar"
     | "page"
     | "richText";
