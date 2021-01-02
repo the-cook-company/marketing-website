@@ -5,6 +5,7 @@ import NextImage from "next/image";
 type PageComposerProps = {
   element: Contentful.IPage;
 };
+
 const PageComposer: FunctionComponent<PageComposerProps> = ({ element }) => {
   return (
     <Page
@@ -17,6 +18,7 @@ const PageComposer: FunctionComponent<PageComposerProps> = ({ element }) => {
       }
       title={element.fields.title}
       description={element.fields.description}
+      callToAction={element.fields.callToAction}
       path={`/pages/${element.fields.slug}`}
     />
   );

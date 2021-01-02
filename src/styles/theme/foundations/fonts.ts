@@ -1,5 +1,5 @@
 const fonts = {
-  heading: "'Hind Light', sans-serif",
+  heading: "'Hind', sans-serif",
   body: "'Roboto Slab', serif",
 };
 

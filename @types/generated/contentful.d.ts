@@ -221,6 +221,9 @@ declare namespace Contentful {
     /** Description */
     description: string;
 
+    /** Call to Action */
+    callToAction: string;
+
     /** Image */
     image: Asset;
 

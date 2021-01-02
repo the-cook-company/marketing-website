@@ -20,6 +20,7 @@ type PageProps = {
   image: ReactElement;
   title: string;
   description: string;
+  callToAction: string;
   path: string;
 };
 
@@ -27,6 +28,7 @@ const Page: FunctionComponent<PageProps> = ({
   image,
   title,
   description,
+  callToAction,
   path,
 }) => {
   const imageContainerHeight = useBreakpointValue({
@@ -34,6 +36,7 @@ const Page: FunctionComponent<PageProps> = ({
     md: 44,
     lg: 48,
   });
+
   return (
     <Box padding={6} shadow="md">
       <Container maxWidth="lg">
@@ -53,7 +56,7 @@ const Page: FunctionComponent<PageProps> = ({
                 color="white.50"
                 rightIcon={<Icon as={ArrowRight} />}
               >
-                Visit Page
+                {callToAction}
               </Button>
             </NextLink>
           </Stack>
