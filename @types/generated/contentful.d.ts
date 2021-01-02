@@ -67,6 +67,9 @@ declare namespace Contentful {
     /** Constrain Width */
     constrainWidth: boolean;
 
+    /** Has Spacing */
+    hasSpacing: boolean;
+
     /** Element */
     element:
       | IAddress

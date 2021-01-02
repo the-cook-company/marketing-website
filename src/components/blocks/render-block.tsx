@@ -1,4 +1,4 @@
-import { Container } from "@chakra-ui/react";
+import { Box, Container } from "@chakra-ui/react";
 import { AssetDownloadComposer } from "components/asset-download";
 import { HeroComposer } from "components/hero";
 import { NavigationBarComposer } from "components/navigation-bar";
@@ -62,11 +62,15 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
       break;
   }
 
-  return block.fields.constrainWidth ? (
-    <Container maxWidth="4xl">{ElementComponent}</Container>
-  ) : (
-    ElementComponent
-  );
+  if (block.fields.constrainWidth) {
+    ElementComponent = <Container maxWidth="4xl">{ElementComponent}</Container>;
+  }
+
+  if (block.fields.hasSpacing) {
+    ElementComponent = <Box marginY={6}>{ElementComponent}</Box>;
+  }
+
+  return ElementComponent;
 };
 
 export { renderBlock };
