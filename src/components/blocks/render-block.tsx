@@ -2,6 +2,8 @@ import { Container } from "@chakra-ui/react";
 import { AssetDownloadComposer } from "components/asset-download";
 import { HeroComposer } from "components/hero";
 import { NavigationBarComposer } from "components/navigation-bar";
+import { PageComposer } from "components/page";
+import { RichTextComposer } from "components/rich-text";
 import { ReactNode } from "react";
 import { v4 as uuid } from "uuid";
 
@@ -21,6 +23,12 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
       );
       break;
     case "page":
+      ElementComponent = (
+        <PageComposer
+          key={uuid()}
+          element={block.fields.element as Contentful.IPage}
+        />
+      );
       break;
     case "hero":
       ElementComponent = (
@@ -37,7 +45,12 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
       ElementComponent = <p>Contact</p>;
       break;
     case "richText":
-      ElementComponent = <p>Rich Text</p>;
+      ElementComponent = (
+        <RichTextComposer
+          key={uuid()}
+          element={block.fields.element as Contentful.IRichText}
+        />
+      );
       break;
     case "navigationBar":
       ElementComponent = (
