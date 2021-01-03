@@ -75,16 +75,20 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
 
   ElementComponent = (
     <Box
-      padding={block.fields.hasPadding ? 6 : 0}
+      padding={block.fields.hasPadding ? { base: 2, md: 6 } : 0}
       shadow={block.fields.hasShadow ? "md" : 0}
-      marginY={block.fields.hasMargin ? 6 : 0}
+      marginY={block.fields.hasMargin ? { base: 12, md: 4 } : 0}
     >
       {ElementComponent}{" "}
     </Box>
   );
 
   if (block.fields.hasConstrainedWidth) {
-    ElementComponent = <Container maxWidth="4xl">{ElementComponent}</Container>;
+    ElementComponent = (
+      <Container maxWidth="4xl" padding={{ base: 0, md: 4 }}>
+        {ElementComponent}
+      </Container>
+    );
   }
 
   return ElementComponent;

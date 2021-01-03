@@ -32,7 +32,7 @@ const Page: FunctionComponent<PageProps> = ({
   return (
     <Container maxWidth="lg">
       <SimpleGrid gap={6} columns={{ sm: 1, md: 2 }}>
-        <AspectRatio ratio={4 / 3}>{image}</AspectRatio>
+        <AspectRatio ratio={9 / 5}>{image}</AspectRatio>
         <Stack>
           <Heading>{title}</Heading>
           <Text noOfLines={3}>{description}</Text>
