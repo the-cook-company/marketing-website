@@ -22,9 +22,13 @@ const AddressPhysical: FunctionComponent<AddressPhysicalProps> = ({
     </Alert>
   ) : isLoaded ? (
     <GoogleMap
+      options={{
+        center: { lat: latitude, lng: longitude },
+        zoom: 15,
+        controlSize: 1,
+        disableDefaultUI: true,
+      }}
       mapContainerStyle={{ height: "100%", width: "100%" }}
-      center={{ lat: latitude, lng: longitude }}
-      zoom={15}
     />
   ) : (
     <Center>

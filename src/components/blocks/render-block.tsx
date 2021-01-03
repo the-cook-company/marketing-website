@@ -1,6 +1,8 @@
 import { Box, Container } from "@chakra-ui/react";
 import { AddressComposer } from "components/address";
 import { AssetDownloadComposer } from "components/asset-download";
+import { ContactComposer } from "components/contact";
+import { FooterComposer } from "components/footer";
 import { ImageComposer } from "components/image";
 import { NavigationBarComposer } from "components/navigation-bar";
 import { PageComposer } from "components/page";
@@ -19,6 +21,7 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
           element={block.fields.element as Contentful.IAddress}
         />
       );
+
       break;
     case "assetDownload":
       ElementComponent = (
@@ -27,6 +30,7 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
           element={block.fields.element as Contentful.IAssetDownload}
         />
       );
+
       break;
     case "page":
       ElementComponent = (
@@ -35,6 +39,7 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
           element={block.fields.element as Contentful.IPage}
         />
       );
+
       break;
     case "image":
       ElementComponent = (
@@ -43,12 +48,25 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
           element={block.fields.element as Contentful.IImage}
         />
       );
+
       break;
     case "footer":
-      ElementComponent = <p>Footer</p>;
+      ElementComponent = (
+        <FooterComposer
+          key={uuid()}
+          element={block.fields.element as Contentful.IFooter}
+        />
+      );
+
       break;
     case "contact":
-      ElementComponent = <p>Contact</p>;
+      ElementComponent = (
+        <ContactComposer
+          key={uuid()}
+          element={block.fields.element as Contentful.IContact}
+        />
+      );
+
       break;
     case "richText":
       ElementComponent = (
@@ -57,6 +75,7 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
           element={block.fields.element as Contentful.IRichText}
         />
       );
+
       break;
     case "navigationBar":
       ElementComponent = (
@@ -65,15 +84,22 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
           element={block.fields.element as Contentful.INavigationBar}
         />
       );
+
       break;
   }
 
-  if (block.fields.constrainWidth) {
-    ElementComponent = <Container maxWidth="4xl">{ElementComponent}</Container>;
-  }
+  ElementComponent = (
+    <Box
+      padding={block.fields.hasPadding ? 6 : 0}
+      shadow={block.fields.hasShadow ? "md" : 0}
+      marginY={block.fields.hasMargin ? 6 : 0}
+    >
+      {ElementComponent}{" "}
+    </Box>
+  );
 
-  if (block.fields.hasSpacing) {
-    ElementComponent = <Box marginY={6}>{ElementComponent}</Box>;
+  if (block.fields.hasConstrainedWidth) {
+    ElementComponent = <Container maxWidth="4xl">{ElementComponent}</Container>;
   }
 
   return ElementComponent;

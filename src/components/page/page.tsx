@@ -1,6 +1,5 @@
 import {
   AspectRatio,
-  Box,
   Button,
   Container,
   Heading,
@@ -31,29 +30,27 @@ const Page: FunctionComponent<PageProps> = ({
   path,
 }) => {
   return (
-    <Box padding={6} shadow="md">
-      <Container maxWidth="lg">
-        <SimpleGrid gap={6} columns={{ sm: 1, md: 2 }}>
-          <AspectRatio ratio={4 / 3}>{image}</AspectRatio>
-          <Stack>
-            <Heading>{title}</Heading>
-            <Text noOfLines={3}>{description}</Text>
-            <Spacer />
-            <NextLink href={path}>
-              <Button
-                as={Link}
-                variant="solid"
-                colorScheme="blue"
-                color="white.50"
-                rightIcon={<Icon as={ArrowRight} />}
-              >
-                {callToAction}
-              </Button>
-            </NextLink>
-          </Stack>
-        </SimpleGrid>
-      </Container>
-    </Box>
+    <Container maxWidth="lg">
+      <SimpleGrid gap={6} columns={{ sm: 1, md: 2 }}>
+        <AspectRatio ratio={4 / 3}>{image}</AspectRatio>
+        <Stack>
+          <Heading>{title}</Heading>
+          <Text noOfLines={3}>{description}</Text>
+          <Spacer />
+          <NextLink href={path}>
+            <Button
+              as={Link}
+              variant="solid"
+              colorScheme="blue"
+              color="white.50"
+              rightIcon={<Icon as={ArrowRight} />}
+            >
+              {callToAction}
+            </Button>
+          </NextLink>
+        </Stack>
+      </SimpleGrid>
+    </Container>
   );
 };
 

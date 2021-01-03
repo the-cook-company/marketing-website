@@ -7,7 +7,6 @@ import {
   Center,
   SimpleGrid,
   Container,
-  Box,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { Download } from "react-feather";
@@ -35,34 +34,32 @@ const AssetDownload: FunctionComponent<AssetDownloadProps> = ({
   };
 
   return (
-    <Box padding={6} shadow="md">
-      <Container maxWidth="lg">
-        <SimpleGrid alignItems="center" gap={6} columns={{ sm: 1, md: 2 }}>
-          <Stack>
-            <Heading as="h2" fontSize="3xl">
-              {title}
-            </Heading>
-            <Text>{description}</Text>
-          </Stack>
-          <Stack>
-            <Button
-              variant="solid"
-              colorScheme="blue"
-              color="white.50"
-              onClick={() => downloadFile()}
-              leftIcon={<Icon as={Download} />}
-            >
-              Download
-            </Button>
-            <Center>
-              <Text fontSize="xs" color="black.500">
-                {`${fileName} ${prettyBytes(fileSize)}`}
-              </Text>
-            </Center>
-          </Stack>
-        </SimpleGrid>
-      </Container>
-    </Box>
+    <Container maxWidth="lg">
+      <SimpleGrid alignItems="center" gap={6} columns={{ sm: 1, md: 2 }}>
+        <Stack>
+          <Heading as="h2" fontSize="3xl">
+            {title}
+          </Heading>
+          <Text>{description}</Text>
+        </Stack>
+        <Stack>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            color="white.50"
+            onClick={() => downloadFile()}
+            leftIcon={<Icon as={Download} />}
+          >
+            Download
+          </Button>
+          <Center>
+            <Text fontSize="xs" color="black.500">
+              {`${fileName} ${prettyBytes(fileSize)}`}
+            </Text>
+          </Center>
+        </Stack>
+      </SimpleGrid>
+    </Container>
   );
 };
 

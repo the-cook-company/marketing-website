@@ -1,5 +1,5 @@
-import { Container, Stack } from "@chakra-ui/react";
-import { FunctionComponent, ReactNodeArray } from "react";
+import { Stack } from "@chakra-ui/react";
+import { FunctionComponent } from "react";
 import { useNavigationBar } from "./context";
 
 type NavigationMenuProps = {

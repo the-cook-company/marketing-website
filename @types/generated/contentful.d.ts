@@ -67,11 +67,17 @@ declare namespace Contentful {
     /** Name */
     name: string;
 
-    /** Constrain Width */
-    constrainWidth: boolean;
+    /** Has Constrained Width */
+    hasConstrainedWidth: boolean;
 
-    /** Has Spacing */
-    hasSpacing: boolean;
+    /** Has Margin */
+    hasMargin: boolean;
+
+    /** Has Padding */
+    hasPadding: boolean;
+
+    /** Has Shadow */
+    hasShadow: boolean;
 
     /** Element */
     element:
@@ -108,9 +114,6 @@ declare namespace Contentful {
 
     /** Tagline */
     tagline: string;
-
-    /** SMTP Connection URL */
-    smtpConnectionUrl: string;
   }
 
   export interface IContact extends Entry<IContactFields> {
@@ -136,6 +139,12 @@ declare namespace Contentful {
 
     /** Logo */
     logo: Asset;
+
+    /** Copyright */
+    copyright: string;
+
+    /** Pages */
+    pages: IPage[];
   }
 
   export interface IFooter extends Entry<IFooterFields> {

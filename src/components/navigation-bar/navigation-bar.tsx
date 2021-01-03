@@ -37,7 +37,7 @@ const NavigationBar: FunctionComponent<NavigationBarProps> = ({
   });
 
   return (
-    <Flex minHeight={24} alignItems="center" shadow="md">
+    <Flex minHeight={24} alignItems="center">
       <Container maxWidth={maxWidth}>
         <Stack direction="row">
           <Center>
