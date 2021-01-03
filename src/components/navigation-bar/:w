@@ -35,22 +35,13 @@ const NavigationBar: FunctionComponent<NavigationBarProps> = ({
     base: false,
     [breakpoint]: true,
   });
-  const containerBorderTopWidth = useBreakpointValue({
-    base: 0,
-    md: 6,
-  });
-  const containerBorderLeftWidth = useBreakpointValue({
-    base: 6,
-    md: 0,
-  });
 
   return (
     <Flex
-      boxSizing="content-box"
+      boxSizing="border-box"
       minHeight={24}
       alignItems="center"
-      borderTop={containerBorderTopWidth}
-      borderLeft={containerBorderLeftWidth}
+      borderTop={6}
       borderStyle="solid"
       borderColor="red.700"
     >
