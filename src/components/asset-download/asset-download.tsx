@@ -40,7 +40,7 @@ const AssetDownload: FunctionComponent<AssetDownloadProps> = ({
           <Heading as="h2" fontSize="3xl">
             {title}
           </Heading>
-          <Text>{description}</Text>
+          <Text noOfLines={3}>{description}</Text>
         </Stack>
         <Stack>
           <Button
