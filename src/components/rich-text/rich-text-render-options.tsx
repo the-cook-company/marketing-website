@@ -60,7 +60,12 @@ const richTextRenderOptions: Options = {
       <UnorderedList>{children}</UnorderedList>
     ),
     [BLOCKS.LIST_ITEM]: (_node, children) => <ListItem>{children}</ListItem>,
-    [BLOCKS.PARAGRAPH]: (_node, children) => <Text>{children}</Text>,
+    [BLOCKS.PARAGRAPH]: (_node, children) => (
+      <>
+        <Text>{children}</Text>
+        <br />
+      </>
+    ),
     [BLOCKS.EMBEDDED_ENTRY]: () => {
       throw new Error(`Disabled node: ${BLOCKS.EMBEDDED_ENTRY} `);
     },

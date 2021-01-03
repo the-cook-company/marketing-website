@@ -1,9 +1,12 @@
 import { NextApiHandler } from "next";
-import { environmentVariables } from "util/config";
+import { privateEnvironmentVariables } from "util/environment-variables";
 import { fetchPage } from "util/contentful";
 
 const handler: NextApiHandler = async (req, res) => {
-  if (req.query.secret !== environmentVariables.contentfulPreviewSecret.value) {
+  if (
+    req.query.secret !==
+    privateEnvironmentVariables.contentfulPreviewSecret.value
+  ) {
     return res.status(401).json({ message: "Invalid token" });
   }
 
