@@ -13,7 +13,7 @@ const FooterComposer: FunctionComponent<FooterComposerProps> = ({
   return (
     <Footer
       logo={
-        <Box position="relative" height="50px">
+        <Box position="relative" height="50px" bg="white.50">
           <NextImage
             src={`https:${element.fields.logo.fields.file.url}`}
             alt={element.fields.logo.fields.title}
