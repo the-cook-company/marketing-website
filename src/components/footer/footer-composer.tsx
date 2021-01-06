@@ -15,6 +15,7 @@ const FooterComposer: FunctionComponent<FooterComposerProps> = ({
       logo={
         <Box position="relative" height="50px" bg="white.50">
           <NextImage
+            quality={1}
             src={`https:${element.fields.logo.fields.file.url}`}
             alt={element.fields.logo.fields.title}
             layout="fill"

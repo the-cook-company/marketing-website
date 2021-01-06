@@ -42,6 +42,8 @@ const NavigationBarComposer: FunctionComponent<NavigationBarComposerProps> = ({
             <NextLink href={`/pages/${element.fields.logoEntry.fields.slug}`}>
               <a>
                 <NextImage
+                  priority
+                  quality={1}
                   src={`https:${element.fields.logo.fields.file.url}`}
                   alt={element.fields.logo.fields.title}
                   layout="fill"
