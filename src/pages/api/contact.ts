@@ -6,8 +6,10 @@ const handler: NextApiHandler = (req, res) => {
   const { body, method } = req;
 
   const { name, email, message } = JSON.parse(body);
+  console.log(name, email, message);
 
   if (method === "POST") {
+    console.log("METHOD: POST");
     try {
       const transport = createTransport({
         host: privateEnvironmentVariables.smtpHost.value,
@@ -17,6 +19,8 @@ const handler: NextApiHandler = (req, res) => {
           pass: privateEnvironmentVariables.smtpPassword.value,
         },
       });
+
+      console.log("sending...");
 
       transport.sendMail({
         from: privateEnvironmentVariables.contactEmailFrom.value,
@@ -29,8 +33,11 @@ const handler: NextApiHandler = (req, res) => {
       `,
       });
 
+      console.log("worked!");
+
       res.status(200).end();
     } catch (e) {
+      console.log(e);
       res.status(400).end();
     }
   }
