@@ -6,10 +6,8 @@ const handler: NextApiHandler = async (req, res) => {
   const { body, method } = req;
 
   const { name, email, message } = JSON.parse(body);
-  console.log(name, email, message);
 
   if (method === "POST") {
-    console.log("METHOD: POST");
     try {
       const transport = createTransport({
         host: privateEnvironmentVariables.smtpHost.value,
@@ -19,8 +17,6 @@ const handler: NextApiHandler = async (req, res) => {
           pass: privateEnvironmentVariables.smtpPassword.value,
         },
       });
-
-      console.log("sending...");
 
       await transport.sendMail({
         from: privateEnvironmentVariables.contactEmailFrom.value,
@@ -32,8 +28,6 @@ const handler: NextApiHandler = async (req, res) => {
       message: ${message}
       `,
       });
-
-      console.log("worked!");
 
       res.status(200).end();
     } catch (e) {
