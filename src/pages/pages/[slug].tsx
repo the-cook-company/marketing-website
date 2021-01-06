@@ -18,6 +18,7 @@ const PagePage: NextPage<PagePageProps> = ({ preview, stringifiedPage }) => {
     <>
       <Head>
         <title>{`${page.fields.title} | The Cook Company`}</title>
+        <meta name="description" content={page.fields.description} />
       </Head>
       {preview ? (
         <Center height={8} bg="red.700" color="white.50">

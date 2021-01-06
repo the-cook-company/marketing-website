@@ -12,6 +12,7 @@ const ImageComposer: FunctionComponent<ImageComposerProps> = ({ element }) => {
       image={
         <NextImage
           src={`https:${element.fields.image.fields.file.url}`}
+          alt={element.fields.image.fields.description}
           layout="fill"
           objectFit="cover"
         />
