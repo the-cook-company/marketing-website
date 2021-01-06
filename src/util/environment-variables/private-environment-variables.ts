@@ -19,6 +19,13 @@ type PrivateEnvironmentVariableNames =
   | "contentfulPreviewHost"
   | "contentfulEnvironment"
   | "contentfulSpaceId"
+  | "smtpHost"
+  | "smtpPort"
+  | "smtpUsername"
+  | "smtpPassword"
+  | "contactEmailFrom"
+  | "contactEmailTo"
+  | "contactEmailSubject"
   | "npmPackageVersion"
   | "npmPackageName";
 
@@ -42,6 +49,55 @@ const getPrivateEnvironmentVariableValue = (
 };
 
 const privateEnvironmentVariables: PrivateEnvironmentVariables = {
+  contactEmailFrom: {
+    required: true,
+    index: "CONTACT_EMAIL_FROM",
+    get value(): string {
+      return getPrivateEnvironmentVariableValue(this);
+    },
+  },
+  contactEmailTo: {
+    required: true,
+    index: "CONTACT_EMAIL_TO",
+    get value(): string {
+      return getPrivateEnvironmentVariableValue(this);
+    },
+  },
+  contactEmailSubject: {
+    required: true,
+    index: "CONTACT_EMAIL_SUBJECT",
+    get value(): string {
+      return getPrivateEnvironmentVariableValue(this);
+    },
+  },
+  smtpPort: {
+    required: true,
+    index: "SMTP_PORT",
+    get value(): string {
+      return getPrivateEnvironmentVariableValue(this);
+    },
+  },
+  smtpHost: {
+    required: true,
+    index: "SMTP_HOST",
+    get value(): string {
+      return getPrivateEnvironmentVariableValue(this);
+    },
+  },
+  smtpUsername: {
+    required: true,
+    index: "SMTP_USERNAME",
+    get value(): string {
+      return getPrivateEnvironmentVariableValue(this);
+    },
+  },
+  smtpPassword: {
+    required: true,
+    index: "SMTP_PASSWORD",
+    get value(): string {
+      return getPrivateEnvironmentVariableValue(this);
+    },
+  },
   contentfulManagementApiAccessToken: {
     required: true,
     index: "CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN",
