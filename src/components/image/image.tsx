@@ -17,9 +17,9 @@ const Image: FunctionComponent<ImageProps> = ({ image, tagline }) => {
 
   return (
     <Box
-      display="flex"
+      display="grid"
       alignItems="center"
-      justifyContent="center"
+      justifyItems="center"
       position="relative"
       height={containerHeight}
     >
