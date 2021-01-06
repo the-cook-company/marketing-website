@@ -1,19 +1,16 @@
 import { Box, Container } from "@chakra-ui/react";
-import { AddressComposer } from "components/address";
-import { AssetDownloadComposer } from "components/asset-download";
-import { ContactComposer } from "components/contact";
-import { FooterComposer } from "components/footer";
-import { ImageComposer } from "components/image";
-import { NavigationBarComposer } from "components/navigation-bar";
-import { PageComposer } from "components/page";
-import { RichTextComposer } from "components/rich-text";
 import { ReactNode } from "react";
+import dynamic from "next/dynamic";
 
 const renderBlock = (block: Contentful.IBlock): ReactNode => {
   let ElementComponent: ReactNode;
 
   switch (block.fields.element.sys.contentType.sys.id) {
-    case "address":
+    case "address": {
+      const AddressComposer = dynamic(() =>
+        import("components/address").then((module) => module.AddressComposer)
+      );
+
       ElementComponent = (
         <AddressComposer
           element={block.fields.element as Contentful.IAddress}
@@ -21,7 +18,14 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
       );
 
       break;
-    case "assetDownload":
+    }
+    case "assetDownload": {
+      const AssetDownloadComposer = dynamic(() =>
+        import("components/asset-download").then(
+          (module) => module.AssetDownloadComposer
+        )
+      );
+
       ElementComponent = (
         <AssetDownloadComposer
           element={block.fields.element as Contentful.IAssetDownload}
@@ -29,25 +33,45 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
       );
 
       break;
-    case "page":
+    }
+    case "page": {
+      const PageComposer = dynamic(() =>
+        import("components/page").then((module) => module.PageComposer)
+      );
+
       ElementComponent = (
         <PageComposer element={block.fields.element as Contentful.IPage} />
       );
 
       break;
-    case "image":
+    }
+    case "image": {
+      const ImageComposer = dynamic(() =>
+        import("components/image").then((module) => module.ImageComposer)
+      );
+
       ElementComponent = (
         <ImageComposer element={block.fields.element as Contentful.IImage} />
       );
 
       break;
-    case "footer":
+    }
+    case "footer": {
+      const FooterComposer = dynamic(() =>
+        import("components/footer").then((module) => module.FooterComposer)
+      );
+
       ElementComponent = (
         <FooterComposer element={block.fields.element as Contentful.IFooter} />
       );
 
       break;
-    case "contact":
+    }
+    case "contact": {
+      const ContactComposer = dynamic(() =>
+        import("components/contact").then((module) => module.ContactComposer)
+      );
+
       ElementComponent = (
         <ContactComposer
           element={block.fields.element as Contentful.IContact}
@@ -55,7 +79,12 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
       );
 
       break;
-    case "richText":
+    }
+    case "richText": {
+      const RichTextComposer = dynamic(() =>
+        import("components/rich-text").then((module) => module.RichTextComposer)
+      );
+
       ElementComponent = (
         <RichTextComposer
           element={block.fields.element as Contentful.IRichText}
@@ -63,7 +92,14 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
       );
 
       break;
-    case "navigationBar":
+    }
+    case "navigationBar": {
+      const NavigationBarComposer = dynamic(() =>
+        import("components/navigation-bar").then(
+          (module) => module.NavigationBarComposer
+        )
+      );
+
       ElementComponent = (
         <NavigationBarComposer
           element={block.fields.element as Contentful.INavigationBar}
@@ -71,6 +107,7 @@ const renderBlock = (block: Contentful.IBlock): ReactNode => {
       );
 
       break;
+    }
   }
 
   ElementComponent = (
