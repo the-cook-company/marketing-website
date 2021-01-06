@@ -2,7 +2,7 @@ import { NextApiHandler } from "next";
 import { createTransport } from "nodemailer";
 import { privateEnvironmentVariables } from "util/environment-variables";
 
-const handler: NextApiHandler = (req, res) => {
+const handler: NextApiHandler = async (req, res) => {
   const { body, method } = req;
 
   const { name, email, message } = JSON.parse(body);
@@ -22,7 +22,7 @@ const handler: NextApiHandler = (req, res) => {
 
       console.log("sending...");
 
-      transport.sendMail({
+      await transport.sendMail({
         from: privateEnvironmentVariables.contactEmailFrom.value,
         to: privateEnvironmentVariables.contactEmailTo.value,
         subject: privateEnvironmentVariables.contactEmailSubject.value,
